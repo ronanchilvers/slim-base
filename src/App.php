@@ -19,6 +19,10 @@ class App extends DIApp
      */
     protected function configureContainer(ContainerBuilder $builder)
     {
+        // General settings
         $builder->addDefinitions(__DIR__ . '/../config/settings.php');
+
+        // Services
+        $builder->addDefinitions(__DIR__ . '/../config/services.php');
     }
 }

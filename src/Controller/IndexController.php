@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Utility\ContainerAwareTrait;
+use App\Utility\LoggerAwareTrait;
 use DI\Container;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * Controller for the index
@@ -13,7 +15,8 @@ use Psr\Http\Message\ResponseInterface;
  */
 class IndexController
 {
-    use ContainerAwareTrait;
+    use ContainerAwareTrait,
+        LoggerAwareTrait;
 
     /**
      * Class constructor
@@ -21,9 +24,11 @@ class IndexController
      * @author Ronan Chilvers <ronan@d3r.com>
      */
     public function __construct(
-        Container $container
+        Container $container,
+        LoggerInterface $logger
     ) {
         $this->setContainer($container);
+        $this->setLogger($logger);
     }
 
     /**
@@ -33,6 +38,7 @@ class IndexController
      */
     public function index(ResponseInterface $response)
     {
+        $this->logger()->info('Hit index');
         return $response->write('Hallo');
     }
 }
