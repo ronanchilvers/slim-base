@@ -15,7 +15,7 @@ return [
 
     // Logger
     LoggerInterface::class => function (Container $c) {
-        $settings = $c->get('settings_logger');
+        $settings = $c->get('config')['logger'];
         $logger = new Logger('default');
         $logger->pushHandler(
             new StreamHandler(
@@ -28,7 +28,7 @@ return [
 
     // Twig
     Twig::class => function (Container $c) {
-        $settings = $c->get('settings_twig');
+        $settings = $c->get('config')['twig'];
         $view = new Twig(
             $settings['templates'],
             [
