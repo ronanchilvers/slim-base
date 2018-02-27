@@ -35,8 +35,14 @@ return [
                 'cache' => $settings['cache']
             ]
         );
-        $basePath = rtrim(str_ireplace('index.php', '', $c['request']->getUri()->getBasePath()), '/');
-        $view->addExtension(new TwigExtension($c['router'], $basePath));
+        $request = $c->get('request');
+        $basePath = rtrim(str_ireplace('index.php', '', $request->getUri()->getBasePath()), '/');
+        $view->addExtension(
+            new TwigExtension(
+                $c->get('router'),
+                $basePath
+            )
+        );
 
         return $view;
     },

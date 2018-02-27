@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "006c54f4fc7b69a85ef05a2bba1e557c",
+    "content-hash": "de5168b00b0434ec72711438d6196672",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -645,6 +645,33 @@
             "time": "2016-10-10T12:19:37+00:00"
         },
         {
+            "name": "ronanchilvers/sassy",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/ronanchilvers/sassy.git",
+                "reference": "839535fa7b9f7e11bc9deb8ae5174b7fe2755ef6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/ronanchilvers%2Fsassy/repository/archive.zip?sha=839535fa7b9f7e11bc9deb8ae5174b7fe2755ef6",
+                "reference": "839535fa7b9f7e11bc9deb8ae5174b7fe2755ef6",
+                "shasum": ""
+            },
+            "type": "library",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ronan Chilvers",
+                    "email": "ronan@thelittledot.com"
+                }
+            ],
+            "description": "Uber simple, naive sass framework",
+            "time": "2018-02-27T21:44:31+00:00"
+        },
+        {
             "name": "slim/slim",
             "version": "3.9.2",
             "source": {
@@ -1052,7 +1079,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "ronanchilvers/sassy": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

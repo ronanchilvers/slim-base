@@ -10,7 +10,8 @@ var sass = require('gulp-sass'),
 
 var sassIncludes = [
     'resources/sass/',
-    'node_modules/'
+    'vendor/',
+    'node_modules/',
 ];
 
 var jsIncludes = [
