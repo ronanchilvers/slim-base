@@ -1,3 +1,4 @@
 /vendor/
 *.sublime-*
 .env.config.ini
+/node_modules/
