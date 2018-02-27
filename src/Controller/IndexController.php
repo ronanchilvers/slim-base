@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use App\Utility\ContainerAwareTrait;
 use App\Utility\LoggerAwareTrait;
+use App\Utility\TwigAwareTrait;
 use DI\Container;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
+use Slim\Views\Twig;
 
 /**
  * Controller for the index
@@ -16,7 +18,8 @@ use Psr\Log\LoggerInterface;
 class IndexController
 {
     use ContainerAwareTrait,
-        LoggerAwareTrait;
+        LoggerAwareTrait,
+        TwigAwareTrait;
 
     /**
      * Class constructor
@@ -25,10 +28,12 @@ class IndexController
      */
     public function __construct(
         Container $container,
+        Twig $twig,
         LoggerInterface $logger
     ) {
         $this->setContainer($container);
         $this->setLogger($logger);
+        $this->setTwig($twig);
     }
 
     /**
@@ -39,6 +44,9 @@ class IndexController
     public function index(ResponseInterface $response)
     {
         $this->logger()->info('Hit index');
-        return $response->write('Hallo');
+        return $this->render(
+            $response,
+            'index/index.html.twig'
+        );
     }
 }

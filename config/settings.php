@@ -11,8 +11,15 @@ return [
     // Slim3 settings
     'settings.displayErrorDetails' => isset($_ENV['displayErrorDetails']) ? (bool) $_ENV['displayErrorDetails'] : false,
 
-    'logger' => [
+    // Logging
+    'settings_logger' => [
         'filename' => __DIR__ . '/../var/log/app.log'
+    ],
+
+    // Twig
+    'settings_twig' => [
+        'templates' => __DIR__ . '/../templates',
+        'cache' => isset($_ENV['twig.cache']) ? $_ENV['twig.cache'] : false,
     ]
 
 ];

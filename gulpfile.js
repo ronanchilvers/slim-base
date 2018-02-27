@@ -15,6 +15,7 @@ var sassIncludes = [
 
 var jsIncludes = [
     'resources/js/',
+    'node_modules/'
 ];
 
 gulp.task('sass', function() {
