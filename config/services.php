@@ -4,6 +4,7 @@
 //   - $container
 //   - $app
 
+use Aura\Sql\ExtendedPdo;
 use DI\Container;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
@@ -45,6 +46,18 @@ return [
         );
 
         return $view;
+    },
+
+    // Database
+    ExtendedPdo::class => function (Container $c) {
+        $settings = $c->get('config')['database'];
+        $pdo = new ExtendedPdo(
+            $settings['dsn'],
+            $settings['username'],
+            $settings['password']
+        );
+
+        return $pdo;
     },
 
 ];
