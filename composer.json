@@ -5,12 +5,11 @@
     "require": {
         "slim/slim": "^3.9",
         "monolog/monolog": "^1.23",
-        "php-di/slim-bridge": "^2.0",
         "vlucas/phpdotenv": "^2.4",
         "slim/twig-view": "^2.3",
         "ronanchilvers/sassy": "dev-master",
-        "aura/sql": "^2.5",
-        "robmorgan/phinx": "^0.9.2"
+        "robmorgan/phinx": "^0.9.2",
+        "ronanchilvers/container": "dev-master"
     },
     "authors": [
         {
@@ -33,6 +32,10 @@
         {
             "type": "vcs",
             "url": "https://gitlab.com/ronanchilvers/sassy.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://gitlab.com/ronanchilvers/container.git"
         }
     ]
 }
