@@ -5,5 +5,10 @@
 //   - $app
 
 use App\Controller\IndexController;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
-$app->get('/', [IndexController::class, 'index']);
+$app->get('/', IndexController::class . ':index');
+// $app->get('/', function (ServerRequestInterface $request, ResponseInterface $response) {
+//     return $response->write('hallo');
+// });
