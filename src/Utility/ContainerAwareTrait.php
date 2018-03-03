@@ -2,7 +2,7 @@
 
 namespace App\Utility;
 
-use DI\Container;
+use Psr\Container\ContainerInterface;
 
 /**
  * Trait for objects that are container aware
@@ -12,17 +12,17 @@ use DI\Container;
 trait ContainerAwareTrait
 {
     /**
-     * @var DI\Container
+     * @var Psr\Container\ContainerInterface
      */
     private $container;
 
     /**
      * Set the container
      *
-     * @param DI\Container $container
+     * @param Psr\Container\ContainerInterface $container
      * @author Ronan Chilvers <ronan@d3r.com>
      */
-    public function setContainer(Container $container)
+    public function setContainer(ContainerInterface $container)
     {
         $this->container = $container;
     }
@@ -30,7 +30,7 @@ trait ContainerAwareTrait
     /**
      * Get the container object
      *
-     * @return DI\Container
+     * @return Psr\Container\ContainerInterface
      * @author Ronan Chilvers <ronan@d3r.com>
      */
     protected function container()
