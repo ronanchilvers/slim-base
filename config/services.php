@@ -49,15 +49,15 @@ $container->set(Twig::class, function (ContainerInterface $c) {
 });
 
 // Controllers
-foreach ([IndexController::class] as $class) {
-    $container->set($class, function ($c) use ($class) {
-        return new $class(
-            $c,
-            $c->get(Twig::class),
-            $c->get(LoggerInterface::class)
-        );
-    });
-}
+// foreach ([IndexController::class] as $class) {
+//     $container->set($class, function ($c) use ($class) {
+//         return new $class(
+//             $c,
+//             $c->get(Twig::class),
+//             $c->get(LoggerInterface::class)
+//         );
+//     });
+// }
 
 // Database
 // ExtendedPdo::class => function (ContainerInterface $c) {

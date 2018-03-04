@@ -1,25 +1,15 @@
 <?php
 
 use App\Controller\IndexController;
-use Ronanchilvers\Container\Container;
+use Ronanchilvers\Container\Slim\Container;
 use Slim\App;
 use Slim\DefaultServicesProvider;
 
 require("../vendor/autoload.php");
 
-// Slim3 support
-$settings = array_merge([
-    'httpVersion' => '1.1',
-    'responseChunkSize' => 4096,
-    'outputBuffering' => 'append',
-    'determineRouteBeforeAppMiddleware' => false,
-    'displayErrorDetails' => false,
-    'addContentLengthHeader' => true,
-    'routerCacheFile' => false,
-], include('../config/settings.php'));
-
-$container = new Container(['settings' => $settings]);
-(new DefaultServicesProvider())->register($container);
+$container = new Container([
+    'settings' => include('../config/settings.php')
+]);
 
 // Load app services
 include("../config/services.php");

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e236f80f6ef3e6d4e409da8cdfbed0cb",
+    "content-hash": "119160316b77d1cd9e83a9bbc26c93dc",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -462,6 +462,42 @@
             ],
             "description": "A very simple, PSR-11 compatible container",
             "time": "2018-03-03T21:32:05+00:00"
+        },
+        {
+            "name": "ronanchilvers/container-bridge-slim",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://gitlab.com/ronanchilvers/container-bridge-slim.git",
+                "reference": "3c117532620709ccbd984d1acd5795304fd99e66"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://gitlab.com/api/v4/projects/ronanchilvers%2Fcontainer-bridge-slim/repository/archive.zip?sha=3c117532620709ccbd984d1acd5795304fd99e66",
+                "reference": "3c117532620709ccbd984d1acd5795304fd99e66",
+                "shasum": ""
+            },
+            "require": {
+                "ronanchilvers/container": "dev-master",
+                "slim/slim": "^3.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ronanchilvers\\Container\\Slim\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ronan Chilvers",
+                    "email": "ronan@thelittledot.com"
+                }
+            ],
+            "description": "Convenience bridge for using ronanchilvers/container with slim3",
+            "time": "2018-03-04T17:00:42+00:00"
         },
         {
             "name": "ronanchilvers/sassy",
@@ -1029,7 +1065,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "ronanchilvers/sassy": 20,
-        "ronanchilvers/container": 20
+        "ronanchilvers/container": 20,
+        "ronanchilvers/container-bridge-slim": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
