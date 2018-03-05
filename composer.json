@@ -36,11 +36,11 @@
         },
         {
             "type": "vcs",
-            "url": "https://gitlab.com/ronanchilvers/container.git"
+            "url": "https://github.com/ronanchilvers/container.git"
         },
         {
             "type": "vcs",
-            "url": "https://gitlab.com/ronanchilvers/container-bridge-slim.git"
+            "url": "https://github.com/ronanchilvers/container-bridge-slim.git"
         }
     ]
 }
