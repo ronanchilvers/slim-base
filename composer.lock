@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "95452a97d387771be42f4f0492d0fb9b",
+    "content-hash": "f286afb7afffc60abe8f564e7d786c48",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -430,16 +430,16 @@
         },
         {
             "name": "ronanchilvers/container",
-            "version": "dev-master",
+            "version": "1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ronanchilvers/container.git",
-                "reference": "ddd440371e09665c328864e9be8b9f68f6cd80e3"
+                "reference": "b1d5f116c968da11cbf231f467a5744f867ba7b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ronanchilvers/container/zipball/ddd440371e09665c328864e9be8b9f68f6cd80e3",
-                "reference": "ddd440371e09665c328864e9be8b9f68f6cd80e3",
+                "url": "https://api.github.com/repos/ronanchilvers/container/zipball/b1d5f116c968da11cbf231f467a5744f867ba7b8",
+                "reference": "b1d5f116c968da11cbf231f467a5744f867ba7b8",
                 "shasum": ""
             },
             "require": {
@@ -455,11 +455,7 @@
                     "Ronanchilvers\\Container\\": "src"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Ronanchilvers\\Container\\Test\\": "tests"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -470,29 +466,28 @@
                 }
             ],
             "description": "A very simple, PSR-11 compatible container",
-            "support": {
-                "source": "https://github.com/ronanchilvers/container/tree/master",
-                "issues": "https://github.com/ronanchilvers/container/issues"
-            },
-            "time": "2018-03-06T22:23:24+00:00"
+            "time": "2018-03-07T21:17:05+00:00"
         },
         {
             "name": "ronanchilvers/container-bridge-slim",
-            "version": "dev-master",
+            "version": "1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ronanchilvers/container-bridge-slim.git",
-                "reference": "32a88ac9ffac435c1063bc1a811e272c3a182389"
+                "reference": "10ada131b19bd82c6b4247df64779edb7ce0438a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ronanchilvers/container-bridge-slim/zipball/32a88ac9ffac435c1063bc1a811e272c3a182389",
-                "reference": "32a88ac9ffac435c1063bc1a811e272c3a182389",
+                "url": "https://api.github.com/repos/ronanchilvers/container-bridge-slim/zipball/10ada131b19bd82c6b4247df64779edb7ce0438a",
+                "reference": "10ada131b19bd82c6b4247df64779edb7ce0438a",
                 "shasum": ""
             },
             "require": {
-                "ronanchilvers/container": "dev-master",
+                "ronanchilvers/container": "^1.0",
                 "slim/slim": "^3.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.0"
             },
             "type": "library",
             "autoload": {
@@ -500,6 +495,7 @@
                     "Ronanchilvers\\Container\\Slim\\": "src"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -510,11 +506,7 @@
                 }
             ],
             "description": "Convenience bridge for using ronanchilvers/container with slim3",
-            "support": {
-                "source": "https://github.com/ronanchilvers/container-bridge-slim/tree/master",
-                "issues": "https://github.com/ronanchilvers/container-bridge-slim/issues"
-            },
-            "time": "2018-03-05T17:26:32+00:00"
+            "time": "2018-03-07T21:11:39+00:00"
         },
         {
             "name": "ronanchilvers/sassy",
@@ -1139,9 +1131,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "ronanchilvers/sassy": 20,
-        "ronanchilvers/container": 20,
-        "ronanchilvers/container-bridge-slim": 20
+        "ronanchilvers/sassy": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
