@@ -46,7 +46,7 @@ class IndexController
         ServerRequestInterface $request,
         ResponseInterface $response
     ) {
-        $this->logger()->info('Hit index');
+        // $this->logger()->info('Hit index');
         return $this->render(
             $response,
             'index/index.html.twig'
