@@ -1,10 +1,12 @@
 <?php
 
-$dotEnv = new Dotenv\Dotenv(
-    __DIR__ . '/../',
-    '.env.config.ini'
-);
-$dotEnv->load();
+if (file_exists(__DIR__ . '/../.env')) {
+    $dotEnv = new Dotenv\Dotenv(
+        __DIR__ . '/../',
+        '.env'
+    );
+    $dotEnv->load();
+}
 
 return [
     // Slim3 settings
