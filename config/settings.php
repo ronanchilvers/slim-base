@@ -19,11 +19,5 @@ return [
     'twig' => [
         'templates' => __DIR__ . '/../templates',
         'cache' => isset($_ENV['twig.cache']) ? $_ENV['twig.cache'] : false,
-    ],
-
-    'database' => [
-        'dsn' => 'mysql:host=localhost;dbname=certificate_checker_dev',
-        'username' => 'dev',
-        'password' => 'dev',
-    ],
+    ]
 ];

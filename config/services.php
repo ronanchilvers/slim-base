@@ -47,26 +47,3 @@ $container->set(Twig::class, function (ContainerInterface $c) {
 
     return $view;
 });
-
-// Controllers
-// foreach ([IndexController::class] as $class) {
-//     $container->set($class, function ($c) use ($class) {
-//         return new $class(
-//             $c,
-//             $c->get(Twig::class),
-//             $c->get(LoggerInterface::class)
-//         );
-//     });
-// }
-
-// Database
-// ExtendedPdo::class => function (ContainerInterface $c) {
-//     $settings = $c->get('config')['database'];
-//     $pdo = new ExtendedPdo(
-//         $settings['dsn'],
-//         $settings['username'],
-//         $settings['password']
-//     );
-
-//     return $pdo;
-// },

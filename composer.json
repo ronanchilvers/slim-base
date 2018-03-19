@@ -1,6 +1,6 @@
 {
-    "name": "ronanchilvers/certificate-checker",
-    "description": "Simple certificate checker",
+    "name": "ronanchilvers/slim-base",
+    "description": "Base framework that extends slim and adds some useful components",
     "type": "project",
     "require": {
         "slim/slim": "^3.9",
@@ -14,7 +14,7 @@
     "authors": [
         {
             "name": "Ronan Chilvers",
-            "email": "ronan@d3r.com"
+            "email": "ronan@thelittledot.com"
         }
     ],
     "autoload": {
