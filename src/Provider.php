@@ -9,6 +9,7 @@ use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Ronanchilvers\Container\Container;
 use Ronanchilvers\Container\ServiceProviderInterface;
+use Ronanchilvers\Sessions\NativeStorage;
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
 
@@ -59,6 +60,22 @@ class Provider implements ServiceProviderInterface
             );
 
             return $view;
+        });
+
+        $container->set('session.storage.options', []);
+
+        $container->share('session.storage', function ($c) {
+            $options = $c->get('session.storage.options');
+
+            return new \Ronanchilvers\Sessions\Storage\NativeStorage(
+                $options
+            );
+        });
+
+        $container->share('session', function ($c) {
+            return new \Ronanchilvers\Sessions\Session(
+                $c->get('session.storage')
+            );
         });
     }
 }
