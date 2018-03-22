@@ -2,9 +2,7 @@
 
 namespace App\Controller;
 
-use App\Utility\ContainerAwareTrait;
-use App\Utility\LoggerAwareTrait;
-use App\Utility\TwigAwareTrait;
+use App\Utility\ControllerTrait;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -18,9 +16,7 @@ use Slim\Views\Twig;
  */
 class IndexController
 {
-    use ContainerAwareTrait,
-        LoggerAwareTrait,
-        TwigAwareTrait;
+    use ControllerTrait;
 
     /**
      * Class constructor
