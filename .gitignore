@@ -1,4 +1,5 @@
-/vendor/
 *.sublime-*
 .env
+/build/
 /node_modules/
+/vendor/

@@ -21,5 +21,9 @@ return [
     'twig' => [
         'templates' => __DIR__ . '/../templates',
         'cache' => isset($_ENV['twig.cache']) ? $_ENV['twig.cache'] : false,
+    ],
+
+    'session' => [
+        'encryption.key' => isset($_ENV['encryption.key']) ? (string) $_ENV['encryption.key'] : null,
     ]
 ];

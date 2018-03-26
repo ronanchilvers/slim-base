@@ -10,7 +10,9 @@
         "ronanchilvers/sassy": "dev-master",
         "robmorgan/phinx": "^0.9.2",
         "ronanchilvers/container-bridge-slim": "~1.0",
-        "ronanchilvers/sessions": "dev-master"
+        "ronanchilvers/sessions": "dev-master",
+        "dflydev/fig-cookies": "^1.0",
+        "defuse/php-encryption": "^2.1"
     },
     "authors": [
         {

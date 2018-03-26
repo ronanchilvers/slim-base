@@ -62,12 +62,14 @@ class Provider implements ServiceProviderInterface
             return $view;
         });
 
-        $container->set('session.storage.options', []);
+        $container->set('session.storage.options', function ($c) {
+            return $c->get('settings')['session'];
+        });
 
         $container->share('session.storage', function ($c) {
             $options = $c->get('session.storage.options');
 
-            return new \Ronanchilvers\Sessions\Storage\NativeStorage(
+            return new \Ronanchilvers\Sessions\Storage\CookieStorage(
                 $options
             );
         });
