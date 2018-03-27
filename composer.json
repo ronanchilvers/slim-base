@@ -12,7 +12,8 @@
         "ronanchilvers/container-bridge-slim": "~1.0",
         "ronanchilvers/sessions": "dev-master",
         "dflydev/fig-cookies": "^1.0",
-        "defuse/php-encryption": "^2.1"
+        "defuse/php-encryption": "^2.1",
+        "ronanchilvers/db": "dev-master"
     },
     "authors": [
         {
@@ -39,6 +40,10 @@
         {
             "type": "vcs",
             "url": "https://github.com/ronanchilvers/sessions.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/ronanchilvers/db.git"
         }
     ]
 }

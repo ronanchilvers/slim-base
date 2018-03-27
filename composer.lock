@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d114e15ba8e10d947a86e63e5b125306",
+    "content-hash": "f9a40955eb3815d08690eacec50957d5",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -672,6 +672,47 @@
             "time": "2018-03-07T21:11:39+00:00"
         },
         {
+            "name": "ronanchilvers/db",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ronanchilvers/db.git",
+                "reference": "8f763371df791d4a6fdb9104f2be590f4fefa9a6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ronanchilvers/db/zipball/8f763371df791d4a6fdb9104f2be590f4fefa9a6",
+                "reference": "8f763371df791d4a6fdb9104f2be590f4fefa9a6",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ronanchilvers\\Db\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Ronanchilvers\\Db\\Test\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ronan Chilvers",
+                    "email": "ronan@thelittledot.com"
+                }
+            ],
+            "description": "Simple database layer",
+            "support": {
+                "source": "https://github.com/ronanchilvers/db/tree/master",
+                "issues": "https://github.com/ronanchilvers/db/issues"
+            },
+            "time": "2018-03-26T15:38:40+00:00"
+        },
+        {
             "name": "ronanchilvers/sassy",
             "version": "dev-master",
             "source": {
@@ -1287,7 +1328,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "ronanchilvers/sassy": 20,
-        "ronanchilvers/sessions": 20
+        "ronanchilvers/sessions": 20,
+        "ronanchilvers/db": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
