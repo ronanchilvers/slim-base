@@ -79,5 +79,14 @@ class Provider implements ServiceProviderInterface
                 $c->get('session.storage')
             );
         });
+
+        $container->share('PDO', function ($c) {
+            $options = $c->get('settings')['database'];
+            return new \PDO(
+                $options['dsn'],
+                $options['username'],
+                $options['password']
+            );
+        });
     }
 }

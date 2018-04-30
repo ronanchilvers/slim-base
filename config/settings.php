@@ -23,7 +23,14 @@ return [
         'cache' => isset($_ENV['twig.cache']) ? $_ENV['twig.cache'] : false,
     ],
 
+    // Session settings
     'session' => [
         'encryption.key' => isset($_ENV['encryption.key']) ? (string) $_ENV['encryption.key'] : null,
-    ]
+    ],
+
+    'database' => [
+        'dsn'      => isset($_ENV['database.dsn']) ? (string) $_ENV['database.dsn'] : null,
+        'username' => isset($_ENV['database.username']) ? (string) $_ENV['database.username'] : null,
+        'password' => isset($_ENV['database.password']) ? (string) $_ENV['database.password'] : null,
+    ],
 ];
