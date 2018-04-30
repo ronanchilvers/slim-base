@@ -3,17 +3,17 @@
     "description": "Base framework that extends slim and adds some useful components",
     "type": "project",
     "require": {
-        "slim/slim": "^3.9",
+        "defuse/php-encryption": "^2.1",
+        "dflydev/fig-cookies": "^1.0",
         "monolog/monolog": "^1.23",
-        "vlucas/phpdotenv": "^2.4",
-        "slim/twig-view": "^2.3",
-        "ronanchilvers/sassy": "dev-master",
         "robmorgan/phinx": "^0.9.2",
         "ronanchilvers/container-bridge-slim": "~1.0",
+        "ronanchilvers/db": "dev-master",
+        "ronanchilvers/sassy": "dev-master",
         "ronanchilvers/sessions": "dev-master",
-        "dflydev/fig-cookies": "^1.0",
-        "defuse/php-encryption": "^2.1",
-        "ronanchilvers/db": "dev-master"
+        "slim/slim": "^3.9",
+        "slim/twig-view": "^2.3",
+        "vlucas/phpdotenv": "^2.4"
     },
     "authors": [
         {
