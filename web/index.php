@@ -1,9 +1,8 @@
 <?php
 
+use App\App;
 use App\Controller\IndexController;
 use Ronanchilvers\Container\Slim\Container;
-use Slim\App;
-use Slim\DefaultServicesProvider;
 
 require("../vendor/autoload.php");
 
