@@ -31,19 +31,5 @@
     },
     "scripts": {
         "serve": "/usr/bin/env php -S localhost:8001 -t web"
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://gitlab.com/ronanchilvers/sassy.git"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/ronanchilvers/sessions.git"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/ronanchilvers/db.git"
-        }
-    ]
+    }
 }
