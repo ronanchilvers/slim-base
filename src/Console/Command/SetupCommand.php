@@ -68,7 +68,7 @@ class SetupCommand extends Command
         $sessionKey = Key::createNewRandomKey();
         $config['encryption.key'] = $sessionKey->saveToAsciiSafeString();
 
-        $question = new ConfirmationQuestion('would you like to setup a database connection? (y/N) ', false);
+        $question = new ConfirmationQuestion('would you like to setup a database connection? (y/N) ', true);
         if ($helper->ask($input, $output, $question)) {
             $output->writeln('- setting up database connection');
             $questions = [
