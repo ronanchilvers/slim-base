@@ -1,5 +1,5 @@
 <?php
-// Add routes here
+// Add middleware here
 // Variables available :
 //   - $container
 //   - $app
