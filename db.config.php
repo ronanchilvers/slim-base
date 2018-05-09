@@ -1,5 +1,13 @@
 <?php
 
+if (file_exists(__DIR__ . '/.env')) {
+    $dotEnv = new Dotenv\Dotenv(
+        __DIR__ . '/',
+        '.env'
+    );
+    $dotEnv->load();
+}
+
 return [
 
     // PDO Instance
