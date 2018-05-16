@@ -32,7 +32,6 @@
         "process-timeout" : 0
     },
     "scripts": {
-        "serve": "/usr/bin/env php -S localhost:8001 -t web",
-        "post-create-project-cmd": "php bin/console setup"
+        "serve": "/usr/bin/env php -S localhost:8001 -t web"
     }
 }
