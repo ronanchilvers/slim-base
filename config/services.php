@@ -7,3 +7,5 @@
 $container->register(
     new \App\Provider()
 );
+
+Ronanchilvers\Foundation\Facade\Facade::setContainer($container);
