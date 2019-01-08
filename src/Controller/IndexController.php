@@ -2,11 +2,11 @@
 
 namespace App\Controller;
 
-use App\Utility\ControllerTrait;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Log\LoggerInterface;
+use Ronanchilvers\Foundation\Slim\Traits\TwigAwareTrait;
 use Slim\Views\Twig;
 
 /**
@@ -16,7 +16,7 @@ use Slim\Views\Twig;
  */
 class IndexController
 {
-    use ControllerTrait;
+    use TwigAwareTrait;
 
     /**
      * Class constructor
@@ -24,13 +24,9 @@ class IndexController
      * @author Ronan Chilvers <ronan@d3r.com>
      */
     public function __construct(
-        ContainerInterface $container,
-        Twig $twig,
-        LoggerInterface $logger
+        Twig $twig
     ) {
-        $this->setContainer($container);
         $this->setTwig($twig);
-        $this->setLogger($logger);
     }
 
     /**
