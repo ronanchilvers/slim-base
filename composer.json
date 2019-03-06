@@ -29,7 +29,10 @@
         }
     },
     "config": {
-        "process-timeout" : 0
+        "process-timeout" : 0,
+        "platform": {
+            "php": "7.0.10"
+        }
     },
     "scripts": {
         "serve": "/usr/bin/env php -S localhost:8001 -t web"
