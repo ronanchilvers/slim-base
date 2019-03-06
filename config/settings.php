@@ -29,7 +29,7 @@ return [
     ],
 
     'database' => [
-        'dsn'      => isset($_ENV['database.dsn']) ? (string) $_ENV['database.dsn'] : null,
+        'dsn'      => isset($_ENV['database.dsn']) ? (string) $_ENV['database.dsn'] : 'sqlite::memory:',
         'username' => isset($_ENV['database.username']) ? (string) $_ENV['database.username'] : null,
         'password' => isset($_ENV['database.password']) ? (string) $_ENV['database.password'] : null,
     ],
