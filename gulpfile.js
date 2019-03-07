@@ -32,14 +32,11 @@ gulp.task('sass', function() {
         }))
         .on('error', notify.onError())
         .pipe(
-            // prefix(["last 2 versions", "> 1%", "ie 8", "ie 7"], { cascade: true })
             prefix({
               browsers: ['last 2 versions', 'ie >= 9', 'Android >= 2.3', 'ios >= 7']
             })
         )
-        // .pipe(cleanCss())
         .pipe(gulp.dest('./web/css'))
-        // .pipe(notify("SASS compilation complete: <%=file.relative%>"))
         ;
 });
 
@@ -48,10 +45,9 @@ gulp.task('js', function() {
         .pipe(include({
             includePaths: jsIncludes
         }))
-        // .pipe(uglify())
+        .pipe(uglify())
         .on('error', notify.onError())
         .pipe(gulp.dest('./web/js'))
-        // .pipe(notify("JS compilation complete: <%=file.relative%>"))
         .on('error', notify.onError())
         ;
 });
