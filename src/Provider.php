@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Capsule\Manager;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Monolog\Registry;
@@ -9,7 +10,8 @@ use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Ronanchilvers\Container\Container;
 use Ronanchilvers\Container\ServiceProviderInterface;
-use Ronanchilvers\Sessions\NativeStorage;
+use Ronanchilvers\Sessions\Session;
+use Ronanchilvers\Sessions\Storage\CookieStorage;
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
 
@@ -29,13 +31,17 @@ class Provider implements ServiceProviderInterface
     {
         // Logger
         $container->set(LoggerInterface::class, function (ContainerInterface $c) {
-            $settings = $c->get('settings')['logger'];
+            $settings = $c->get('settings');
+            $loggerSettings = $settings['logger'];
             $logger = new Logger('default');
-            $logger->pushHandler(
-                new StreamHandler(
-                    $settings['filename']
-                )
-            );
+            if (isset($loggerSettings['filename'])) {
+                $logger->pushHandler(
+                    new StreamHandler(
+                        $loggerSettings['filename'],
+                        Logger::DEBUG
+                    )
+                );
+            }
             Registry::addLogger($logger);
 
             return $logger;
@@ -62,31 +68,32 @@ class Provider implements ServiceProviderInterface
             return $view;
         });
 
+        // Session
         $container->set('session.storage.options', function ($c) {
             return $c->get('settings')['session'];
         });
-
         $container->share('session.storage', function ($c) {
             $options = $c->get('session.storage.options');
 
-            return new \Ronanchilvers\Sessions\Storage\CookieStorage(
+            return new CookieStorage(
                 $options
             );
         });
-
         $container->share('session', function ($c) {
-            return new \Ronanchilvers\Sessions\Session(
+            return new Session(
                 $c->get('session.storage')
             );
         });
 
-        $container->share('PDO', function ($c) {
+        // Eloquent
+        $container->share('eloquent.capsule', function ($c) {
             $options = $c->get('settings')['database'];
-            return new \PDO(
-                $options['dsn'],
-                $options['username'],
-                $options['password']
-            );
+            $capsule = new Manager();
+            $capsule->addConnection($options);
+            $capsule->setAsGlobal();
+            // $capsule->bootEloquent();
+
+            return $capsule;
         });
     }
 }

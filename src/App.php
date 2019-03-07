@@ -3,7 +3,7 @@
 namespace App;
 
 use Psr\Container\ContainerInterface;
-use Ronanchilvers\Db\Model;
+use Ronanchilvers\Foundation\Facade\Facade;
 use Slim\App as SlimApp;
 
 /**
@@ -29,6 +29,11 @@ class App extends SlimApp
      */
     protected function boot(ContainerInterface $container)
     {
-        Model::setPdo($container->get('PDO'));
+        // Configure facades
+        Facade::setContainer($container);
+
+        // Boot eloquent
+        $capsule = $container->get('eloquent.capsule');
+        $capsule->bootEloquent();
     }
 }

@@ -2,18 +2,18 @@
 
 namespace App\Facades;
 
-use Psr\Log\LoggerInterface;
 use Ronanchilvers\Foundation\Facade\Facade;
+use Slim\Views\Twig as TwigView;
 
 /**
  * Session facade class
  *
  * @author Ronan Chilvers <ronan@d3r.com>
  */
-class Log extends Facade
+class View extends Facade
 {
     /**
      * @var string
      */
-    protected static $serviceName = LoggerInterface::class;
+    protected static $serviceName = TwigView::class;
 }
