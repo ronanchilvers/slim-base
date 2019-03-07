@@ -68,10 +68,10 @@ class Provider implements ServiceProviderInterface
             return $view;
         });
 
+        // Session
         $container->set('session.storage.options', function ($c) {
             return $c->get('settings')['session'];
         });
-
         $container->share('session.storage', function ($c) {
             $options = $c->get('session.storage.options');
 
@@ -79,13 +79,13 @@ class Provider implements ServiceProviderInterface
                 $options
             );
         });
-
         $container->share('session', function ($c) {
             return new Session(
                 $c->get('session.storage')
             );
         });
 
+        // Eloquent
         $container->share('eloquent.capsule', function ($c) {
             $options = $c->get('settings')['database'];
             $capsule = new Manager();
