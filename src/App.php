@@ -29,6 +29,5 @@ class App extends SlimApp
      */
     protected function boot(ContainerInterface $container)
     {
-        Model::setPdo($container->get('PDO'));
     }
 }
