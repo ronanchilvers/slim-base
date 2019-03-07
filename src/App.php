@@ -29,5 +29,8 @@ class App extends SlimApp
      */
     protected function boot(ContainerInterface $container)
     {
+        // Boot eloquent
+        $capsule = $container->get('eloquent.capsule');
+        $capsule->bootEloquent();
     }
 }

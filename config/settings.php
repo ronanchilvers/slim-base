@@ -20,10 +20,12 @@ $settings = [
         'encryption.key' => null,
     ],
 
+    // Database connections
     'database' => [
         'driver'   => 'sqlite',
         'host'     => '',
-        'database' => __DIR__ . '/../var/database/app.sq3',
+        'port'     => '',
+        'database' => __DIR__ . '/../var/database/app',
         'username' => '',
         'password' => '',
         'charset'  => 'utf8',

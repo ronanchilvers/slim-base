@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Capsule\Manager;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Monolog\Registry;
@@ -80,13 +81,14 @@ class Provider implements ServiceProviderInterface
             );
         });
 
-        $container->share('PDO', function ($c) {
+        $container->share('eloquent.capsule', function ($c) {
             $options = $c->get('settings')['database'];
-            return new \PDO(
-                $options['dsn'],
-                $options['username'],
-                $options['password']
-            );
+            $capsule = new Manager();
+            $capsule->addConnection($options);
+            $capsule->setAsGlobal();
+            // $capsule->bootEloquent();
+
+            return $capsule;
         });
     }
 }
