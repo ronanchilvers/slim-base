@@ -6,9 +6,7 @@
         "defuse/php-encryption": "^2.1",
         "dflydev/fig-cookies": "^1.0",
         "monolog/monolog": "^1.23",
-        "robmorgan/phinx": "^0.9.2",
         "ronanchilvers/container-bridge-slim": "~1.0",
-        "ronanchilvers/db": "dev-master",
         "ronanchilvers/foundation": "dev-master",
         "ronanchilvers/sessions": "dev-master",
         "slim/slim": "^3.9",
@@ -24,8 +22,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "App\\": "src",
-            "App\\Generated\\": "generated"
+            "App\\": "src"
         }
     },
     "config": {
