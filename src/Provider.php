@@ -30,13 +30,17 @@ class Provider implements ServiceProviderInterface
     {
         // Logger
         $container->set(LoggerInterface::class, function (ContainerInterface $c) {
-            $settings = $c->get('settings')['logger'];
+            $settings = $c->get('settings');
+            $loggerSettings = $settings['logger'];
             $logger = new Logger('default');
-            $logger->pushHandler(
-                new StreamHandler(
-                    $settings['filename']
-                )
-            );
+            if (isset($loggerSettings['filename'])) {
+                $logger->pushHandler(
+                    new StreamHandler(
+                        $loggerSettings['filename'],
+                        Logger::DEBUG
+                    )
+                );
+            }
             Registry::addLogger($logger);
 
             return $logger;

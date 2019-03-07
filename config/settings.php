@@ -6,7 +6,7 @@ $settings = [
 
     // Logging
     'logger' => [
-        'filename' => __DIR__ . '/../var/log/app.log'
+        'filename' => false
     ],
 
     // Twig
