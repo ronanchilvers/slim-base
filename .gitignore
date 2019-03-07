@@ -5,3 +5,4 @@
 /vendor/
 .php-version
 local.config.php
+*.sq3

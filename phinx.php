@@ -1,6 +1,12 @@
 <?php
 $settings = include(__DIR__ . '/config/settings.php');
 $config   = $settings['database'];
+$suffix   = '';
+if ('sqlite' == $config['driver']) {
+    $name = $config['database'];
+    $suffix = pathinfo($name, PATHINFO_EXTENSION);
+    $name = str_replace('.' . $suffix, '', $name);
+}
 
 return [
 
@@ -28,7 +34,8 @@ return [
             'adapter'   => $config['driver'],
             'host'      => $config['host'],
             'port'      => $config['port'],
-            'name'      => $config['database'],
+            'name'      => $name,
+            'suffix'    => $suffix,
             'user'      => $config['username'],
             'pass'      => $config['password'],
             'charset'   => $config['charset'],
