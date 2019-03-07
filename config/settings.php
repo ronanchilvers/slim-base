@@ -1,16 +1,8 @@
 <?php
 
-if (file_exists(__DIR__ . '/../.env')) {
-    $dotEnv = new Dotenv\Dotenv(
-        __DIR__ . '/../',
-        '.env'
-    );
-    $dotEnv->load();
-}
-
-return [
+$settings = [
     // Slim3 settings
-    'displayErrorDetails' => isset($_ENV['displayErrorDetails']) ? (bool) $_ENV['displayErrorDetails'] : false,
+    'displayErrorDetails' => false,
 
     // Logging
     'logger' => [
@@ -20,17 +12,30 @@ return [
     // Twig
     'twig' => [
         'templates' => __DIR__ . '/../templates',
-        'cache' => isset($_ENV['twig.cache']) ? $_ENV['twig.cache'] : false,
+        'cache' => __DIR__ . '/../var/twig',
     ],
 
     // Session settings
     'session' => [
-        'encryption.key' => isset($_ENV['encryption.key']) ? (string) $_ENV['encryption.key'] : null,
+        'encryption.key' => null,
     ],
 
     'database' => [
-        'dsn'      => isset($_ENV['database.dsn']) ? (string) $_ENV['database.dsn'] : 'sqlite::memory:',
-        'username' => isset($_ENV['database.username']) ? (string) $_ENV['database.username'] : null,
-        'password' => isset($_ENV['database.password']) ? (string) $_ENV['database.password'] : null,
+        'driver'   => 'sqlite',
+        'host'     => '',
+        'database' => __DIR__ . '/../var/database/app.sq3',
+        'username' => '',
+        'password' => '',
+        'charset'  => 'utf8',
+        'collation'=> 'utf8_unicode_ci',
+        'prefix'   => '',
     ],
 ];
+
+$localConfig = __DIR__ . '/../local.config.php';
+if (file_exists($localConfig)) {
+    $localSettings = include($localConfig);
+    $settings = array_replace_recursive($settings, $localSettings);
+}
+
+return $settings;
