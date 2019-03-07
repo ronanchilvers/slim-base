@@ -3,7 +3,6 @@
 namespace App;
 
 use Psr\Container\ContainerInterface;
-use Ronanchilvers\Db\Model;
 use Ronanchilvers\Foundation\Facade\Facade;
 use Slim\App as SlimApp;
 

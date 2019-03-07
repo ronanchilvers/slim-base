@@ -10,7 +10,8 @@ use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
 use Ronanchilvers\Container\Container;
 use Ronanchilvers\Container\ServiceProviderInterface;
-use Ronanchilvers\Sessions\NativeStorage;
+use Ronanchilvers\Sessions\Session;
+use Ronanchilvers\Sessions\Storage\CookieStorage;
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
 
@@ -74,13 +75,13 @@ class Provider implements ServiceProviderInterface
         $container->share('session.storage', function ($c) {
             $options = $c->get('session.storage.options');
 
-            return new \Ronanchilvers\Sessions\Storage\CookieStorage(
+            return new CookieStorage(
                 $options
             );
         });
 
         $container->share('session', function ($c) {
-            return new \Ronanchilvers\Sessions\Session(
+            return new Session(
                 $c->get('session.storage')
             );
         });
