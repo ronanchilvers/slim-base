@@ -13,12 +13,7 @@ use Ronanchilvers\Foundation\Facade\Facade;
 class Log extends Facade
 {
     /**
-     * {@inheritdoc}
-     *
-     * @author Ronan Chilvers <ronan@d3r.com>
+     * @var string
      */
-    protected static function getFacadeName()
-    {
-        return LoggerInterface::class;
-    }
+    protected static $serviceName = LoggerInterface::class;
 }

@@ -12,12 +12,7 @@ use Ronanchilvers\Foundation\Facade\Facade;
 class Session extends Facade
 {
     /**
-     * {@inheritdoc}
-     *
-     * @author Ronan Chilvers <ronan@d3r.com>
+     * @var string
      */
-    protected static function getFacadeName()
-    {
-        return 'session';
-    }
+    protected static $serviceName = 'session';
 }
