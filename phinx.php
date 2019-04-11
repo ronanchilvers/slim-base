@@ -1,9 +1,9 @@
 <?php
 $settings = include(__DIR__ . '/config/settings.php');
 $config   = $settings['database'];
+$name     = $config['database'];
 $suffix   = '';
 if ('sqlite' == $config['driver']) {
-    $name = $config['database'];
     $suffix = pathinfo($name, PATHINFO_EXTENSION);
     $name = str_replace('.' . $suffix, '', $name);
 }
