@@ -34,7 +34,7 @@ $settings = [
     ],
 ];
 
-$localConfig = __DIR__ . '/../local.config.php';
+$localConfig = __DIR__ . '/../config.php';
 if (file_exists($localConfig)) {
     $localSettings = include($localConfig);
     $settings = array_replace_recursive($settings, $localSettings);

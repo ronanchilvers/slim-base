@@ -4,5 +4,5 @@
 /node_modules/
 /vendor/
 .php-version
-local.config.php
+config.php
 *.sq3
