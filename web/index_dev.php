@@ -50,6 +50,24 @@ $container->extend('monolog', function ($logger, $container){
 
     return $logger;
 });
+// Twig override
+// $pimple->extend('twig', function ($twig, $container) {
+//     $bar = $container['debug.bar'];
+//     $traceableTwig = new TraceableTwigEnvironment($twig, $bar['time']);
+//     $bar->addCollector(new TwigCollector($traceableTwig));
+
+//     return $traceableTwig;
+// });
+
+// PDO Override
+// $pimple->extend('PDO', function ($pdo, $container){
+//     $traceablePDO = new TraceablePDO($pdo);
+//     $container['debug.bar']->addCollector(
+//         new PDOCollector($traceablePDO)
+//     );
+
+//     return $traceablePDO;
+// });
 
 // Create the App object
 $app = new App($container);
