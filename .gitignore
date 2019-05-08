@@ -6,3 +6,4 @@
 .php-version
 local.settings.php
 *.sq3
+web/debugbar

@@ -30,7 +30,7 @@ class Provider implements ServiceProviderInterface
     public function register(Container $container)
     {
         // Logger
-        $container->set(LoggerInterface::class, function (ContainerInterface $c) {
+        $container->set('monolog', function (ContainerInterface $c) {
             $settings = $c->get('settings');
             $loggerSettings = $settings['logger'];
             $logger = new Logger('default');
@@ -46,6 +46,7 @@ class Provider implements ServiceProviderInterface
 
             return $logger;
         });
+        $container->set(LoggerInterface::class, '@monolog');
 
         // Twig
         $container->set(Twig::class, function (ContainerInterface $c) {
