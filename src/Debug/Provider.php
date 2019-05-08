@@ -11,42 +11,44 @@ use DebugBar\DataCollector\ConfigCollector;
 use DebugBar\DataCollector\PDO\PDOCollector;
 use DebugBar\DataCollector\PDO\TraceablePDO;
 use DebugBar\StandardDebugBar;
-use Pimple\Container;
-use Pimple\ServiceProviderInterface;
-use Silex\Api\BootableProviderInterface;
-use Silex\Application;
+use Ronanchilvers\Container\ServiceProviderInterface;
+use Ronanchilvers\Container\Container;
 
 /**
  * Provider for PHPDebugBar
  *
  * @author Ronan Chilvers <ronan@d3r.com>
  */
-class Provider implements
-    ServiceProviderInterface,
-    BootableProviderInterface
+class Provider implements ServiceProviderInterface
 {
     /**
      * @author Ronan Chilvers <ronan@d3r.com>
      */
-    public function register(Container $pimple)
+    public function register(Container $container)
     {
-        $pimple['debug.bar.renderer'] = function (Container $container) {
-            $bar      = $container['debug.bar'];
+        $container->set('debug.bar.renderer', function (Container $container) {
+            $bar      = $container->get('debug.bar');
             $renderer = $bar->getJavascriptRenderer()
                  ->setBaseUrl('/debugbar')
                  ->setEnableJqueryNoConflict(true);
 
             return $renderer;
-        };
+        });
 
-        $pimple['debug.bar'] = function (Container $container) {
+        $container->set('debug.bar', function (Container $container) {
             $bar = new StandardDebugBar();
             $bar->addCollector(
-                new ConfigCollector($container['config'])
+                new ConfigCollector($container->get('settings'))
             );
 
             return $bar;
-        };
+        });
+
+        $container->set('debug.middleware', function (Container $container) {
+            return new DebugMiddleware(
+                $container->get('debug.bar.renderer')
+            );
+        });
 
         // Twig override
         // $pimple->extend('twig', function ($twig, $container) {
@@ -68,8 +70,8 @@ class Provider implements
         // });
 
         // Monolog
-        $pimple->extend('monolog', function ($logger, $container){
-            $container['debug.bar']->addCollector(
+        $container->extend('monolog', function ($logger, $container){
+            $container->get('debug.bar')->addCollector(
                 new MonologCollector($logger)
             );
 
