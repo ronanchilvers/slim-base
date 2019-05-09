@@ -92,6 +92,7 @@ class Provider implements ServiceProviderInterface
             $capsule = new Manager();
             $capsule->addConnection($options);
             $capsule->setAsGlobal();
+            $capsule->bootEloquent();
 
             return $capsule;
         });

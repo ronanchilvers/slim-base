@@ -50,6 +50,11 @@ class Provider implements ServiceProviderInterface
             );
         });
 
+        $container->extend('eloquent.capsule', function ($capsule, Container $container) {
+            $capsule::connection()->enableQueryLog();
+            return $capsule;
+        });
+
         // Twig override
         // $pimple->extend('twig', function ($twig, $container) {
         //     $bar = $container['debug.bar'];
