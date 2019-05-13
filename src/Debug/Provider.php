@@ -11,6 +11,7 @@ use DebugBar\DataCollector\ConfigCollector;
 use DebugBar\DataCollector\PDO\PDOCollector;
 use DebugBar\DataCollector\PDO\TraceablePDO;
 use DebugBar\StandardDebugBar;
+use PDO;
 use Psr\Log\LoggerInterface;
 use Ronanchilvers\Container\Container;
 use Ronanchilvers\Container\ServiceProviderInterface;
@@ -69,14 +70,14 @@ class Provider implements ServiceProviderInterface
         // });
 
         // PDO Override
-        // $container->extend('PDO', function ($pdo, $container){
-        //     $traceablePDO = new TraceablePDO($pdo);
-        //     $container['debug.bar']->addCollector(
-        //         new PDOCollector($traceablePDO)
-        //     );
+        $container->extend(PDO::class, function ($pdo, $container){
+            $traceablePDO = new TraceablePDO($pdo);
+            $container->get('debug.bar')->addCollector(
+                new PDOCollector($traceablePDO)
+            );
 
-        //     return $traceablePDO;
-        // });
+            return $traceablePDO;
+        });
 
         // Monolog
         $container->extend(LoggerInterface::class, function ($logger, $container){

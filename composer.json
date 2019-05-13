@@ -5,7 +5,6 @@
     "require": {
         "defuse/php-encryption": "^2.1",
         "dflydev/fig-cookies": "^1.0",
-        "illuminate/database": "^5.5",
         "monolog/monolog": "^1.23",
         "robmorgan/phinx": "^0.10.6",
         "ronanchilvers/container-bridge-slim": "^1.0",
@@ -13,7 +12,8 @@
         "ronanchilvers/sessions": "dev-master",
         "slim/slim": "^3.9",
         "slim/twig-view": "^2.3",
-        "symfony/console": "^3.4"
+        "symfony/console": "^3.4",
+        "ronanchilvers/orm": "dev-master"
     },
     "require-dev": {
         "maximebf/debugbar": "^1.0"

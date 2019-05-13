@@ -2,10 +2,10 @@
 
 namespace App\Traits;
 
-use App\Model\Observer\ProjectObserver;
-use App\Model\Project;
+use PDO;
 use Psr\Container\ContainerInterface;
 use Ronanchilvers\Foundation\Facade\Facade;
+use Ronanchilvers\Orm\Orm;
 
 /**
  * Trait providing methods for booting the application
@@ -24,8 +24,7 @@ trait BootTrait
         // Configure facades
         Facade::setContainer($container);
 
-        // Boot eloquent
-        $capsule = $container->get('eloquent.capsule');
-        $capsule->bootEloquent();
+        // Configure ORM
+        Orm::setConnection($container->get(PDO::class));
     }
 }

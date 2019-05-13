@@ -22,15 +22,10 @@ $settings = [
 
     // Database connections
     'database' => [
-        'driver'   => 'sqlite',
-        'host'     => '',
-        'port'     => '',
-        'database' => __DIR__ . '/../var/database/app.sq3',
+        'dsn'      => 'sqlite:' . __DIR__ . '/../var/database/app.sq3',
         'username' => '',
         'password' => '',
-        'charset'  => 'utf8',
-        'collation'=> 'utf8_unicode_ci',
-        'prefix'   => '',
+        'options'  => [],
     ],
 ];
 
