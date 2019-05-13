@@ -11,8 +11,10 @@ use DebugBar\DataCollector\ConfigCollector;
 use DebugBar\DataCollector\PDO\PDOCollector;
 use DebugBar\DataCollector\PDO\TraceablePDO;
 use DebugBar\StandardDebugBar;
-use Ronanchilvers\Container\ServiceProviderInterface;
+use Psr\Log\LoggerInterface;
 use Ronanchilvers\Container\Container;
+use Ronanchilvers\Container\ServiceProviderInterface;
+use Slim\Views\Twig;
 
 /**
  * Provider for PHPDebugBar
@@ -26,7 +28,7 @@ class Provider implements ServiceProviderInterface
      */
     public function register(Container $container)
     {
-        $container->set('debug.bar.renderer', function (Container $container) {
+        $container->share('debug.bar.renderer', function (Container $container) {
             $bar      = $container->get('debug.bar');
             $renderer = $bar->getJavascriptRenderer()
                  ->setBaseUrl('/debugbar')
@@ -35,7 +37,7 @@ class Provider implements ServiceProviderInterface
             return $renderer;
         });
 
-        $container->set('debug.bar', function (Container $container) {
+        $container->share('debug.bar', function (Container $container) {
             $bar = new StandardDebugBar();
             $bar->addCollector(
                 new ConfigCollector($container->get('settings'))
@@ -44,20 +46,22 @@ class Provider implements ServiceProviderInterface
             return $bar;
         });
 
-        $container->set('debug.middleware', function (Container $container) {
+        $container->share('debug.middleware', function (Container $container) {
             return new DebugMiddleware(
                 $container->get('debug.bar.renderer')
             );
         });
 
-        $container->extend('eloquent.capsule', function ($capsule, Container $container) {
-            $capsule::connection()->enableQueryLog();
-            return $capsule;
-        });
+        // $container->extend('eloquent.capsule', function ($capsule, Container $container) {
+        //     $capsule::connection()->enableQueryLog();
+        //     return $capsule;
+        // });
 
         // Twig override
-        // $pimple->extend('twig', function ($twig, $container) {
-        //     $bar = $container['debug.bar'];
+        // $container->extend(Twig::class, function ($twig, $container) {
+        // //     $bar = $container['debug.bar'];
+        // //     $traceableTwig = new TraceableTwigEnvironment($twig, $bar['time']);
+        //     $bar = $container->get('debug.bar');
         //     $traceableTwig = new TraceableTwigEnvironment($twig, $bar['time']);
         //     $bar->addCollector(new TwigCollector($traceableTwig));
 
@@ -65,7 +69,7 @@ class Provider implements ServiceProviderInterface
         // });
 
         // PDO Override
-        // $pimple->extend('PDO', function ($pdo, $container){
+        // $container->extend('PDO', function ($pdo, $container){
         //     $traceablePDO = new TraceablePDO($pdo);
         //     $container['debug.bar']->addCollector(
         //         new PDOCollector($traceablePDO)
@@ -75,7 +79,7 @@ class Provider implements ServiceProviderInterface
         // });
 
         // Monolog
-        $container->extend('monolog', function ($logger, $container){
+        $container->extend(LoggerInterface::class, function ($logger, $container){
             $container->get('debug.bar')->addCollector(
                 new MonologCollector($logger)
             );

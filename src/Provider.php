@@ -30,11 +30,11 @@ class Provider implements ServiceProviderInterface
     public function register(Container $container)
     {
         // Logger
-        $container->set('monolog', function (ContainerInterface $c) {
+        $container->share(LoggerInterface::class, function (ContainerInterface $c) {
             $settings = $c->get('settings');
             $loggerSettings = $settings['logger'];
             $logger = new Logger('default');
-            if (isset($loggerSettings['filename'])) {
+            if (isset($loggerSettings['filename']) && false !== $loggerSettings['filename']) {
                 $logger->pushHandler(
                     new StreamHandler(
                         $loggerSettings['filename'],
@@ -46,10 +46,9 @@ class Provider implements ServiceProviderInterface
 
             return $logger;
         });
-        $container->set(LoggerInterface::class, '@monolog');
 
         // Twig
-        $container->set(Twig::class, function (ContainerInterface $c) {
+        $container->share(Twig::class, function (ContainerInterface $c) {
             $settings = $c->get('settings')['twig'];
             $view = new Twig(
                 $settings['templates'],
@@ -70,7 +69,7 @@ class Provider implements ServiceProviderInterface
         });
 
         // Session
-        $container->set('session.storage.options', function ($c) {
+        $container->share('session.storage.options', function ($c) {
             return $c->get('settings')['session'];
         });
         $container->share('session.storage', function ($c) {
