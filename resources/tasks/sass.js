@@ -21,10 +21,7 @@ gulp.task('sass', function() {
             .on('error', notify.onError())
         )
         .pipe(
-            prefix({
-              browsers: ['last 4 versions', '> 1%'],
-              cascade: true,
-            })
+            prefix({ cascade: true })
         )
         .pipe(minify())
         .pipe(gulp.dest('./web/css'))
