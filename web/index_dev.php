@@ -1,7 +1,7 @@
 <?php
 
 use App\Slim\App;
-use Ronanchilvers\Container\Slim\Container;
+use Slim\Container;
 
 if (PHP_SAPI == 'cli-server') {
     $url  = parse_url($_SERVER['REQUEST_URI']);

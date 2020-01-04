@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a2d05f8879a2e7ec6ed6dbda0539618",
+    "content-hash": "598ffc94889448ab33801279a6dcb991",
     "packages": [
         {
             "name": "cakephp/cache",
@@ -418,6 +418,7 @@
             ],
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
+            "abandoned": "psr/container",
             "time": "2017-02-14T19:40:03+00:00"
         },
         {
@@ -1088,86 +1089,6 @@
                 "phinx"
             ],
             "time": "2019-07-08T16:59:55+00:00"
-        },
-        {
-            "name": "ronanchilvers/container",
-            "version": "1.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ronanchilvers/container.git",
-                "reference": "1f315f696f88612542a692c7328f8fd58949b9dc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ronanchilvers/container/zipball/1f315f696f88612542a692c7328f8fd58949b9dc",
-                "reference": "1f315f696f88612542a692c7328f8fd58949b9dc",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.0",
-                "psr/container": "^1.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Ronanchilvers\\Container\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ronan Chilvers",
-                    "email": "ronan@thelittledot.com"
-                }
-            ],
-            "description": "A very simple, PSR-11 compatible container",
-            "time": "2019-05-13T07:36:20+00:00"
-        },
-        {
-            "name": "ronanchilvers/container-bridge-slim",
-            "version": "1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ronanchilvers/container-bridge-slim.git",
-                "reference": "10ada131b19bd82c6b4247df64779edb7ce0438a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ronanchilvers/container-bridge-slim/zipball/10ada131b19bd82c6b4247df64779edb7ce0438a",
-                "reference": "10ada131b19bd82c6b4247df64779edb7ce0438a",
-                "shasum": ""
-            },
-            "require": {
-                "ronanchilvers/container": "^1.0",
-                "slim/slim": "^3.9"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^6.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Ronanchilvers\\Container\\Slim\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ronan Chilvers",
-                    "email": "ronan@thelittledot.com"
-                }
-            ],
-            "description": "Convenience bridge for using ronanchilvers/container with slim3",
-            "time": "2018-03-07T21:11:39+00:00"
         },
         {
             "name": "ronanchilvers/foundation",

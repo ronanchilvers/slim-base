@@ -8,8 +8,8 @@ use Monolog\Registry;
 use PDO;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
-use Ronanchilvers\Container\Container;
-use Ronanchilvers\Container\ServiceProviderInterface;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 use Ronanchilvers\Sessions\Session;
 use Ronanchilvers\Sessions\Storage\CookieStorage;
 use Slim\Views\Twig;
@@ -30,8 +30,8 @@ class Provider implements ServiceProviderInterface
     public function register(Container $container)
     {
         // Logger
-        $container->share(LoggerInterface::class, function (ContainerInterface $c) {
-            $settings = $c->get('settings');
+        $container[LoggerInterface::class] = function (ContainerInterface $c) {
+            $settings = $c['settings'];
             $loggerSettings = $settings['logger'];
             $logger = new Logger('default');
             if (isset($loggerSettings['filename']) && false !== $loggerSettings['filename']) {
@@ -45,11 +45,11 @@ class Provider implements ServiceProviderInterface
             Registry::addLogger($logger);
 
             return $logger;
-        });
+        };
 
         // Twig
-        $container->share(Twig::class, function (ContainerInterface $c) {
-            $settings = $c->get('settings')['twig'];
+        $container[Twig::class] = function (ContainerInterface $c) {
+            $settings = $c['settings']['twig'];
             $view = new Twig(
                 $settings['templates'],
                 [
@@ -66,34 +66,34 @@ class Provider implements ServiceProviderInterface
             );
 
             return $view;
-        });
+        };
 
         // Session
-        $container->share('session.storage.options', function ($c) {
-            return $c->get('settings')['session'];
-        });
-        $container->share('session.storage', function ($c) {
-            $options = $c->get('session.storage.options');
+        $container['session.storage.options'] = function ($c) {
+            return $c['settings']['session'];
+        };
+        $container['session.storage'] = function ($c) {
+            $options = $c['session.storage.options'];
 
             return new CookieStorage(
                 $options
             );
-        });
-        $container->share('session', function ($c) {
+        };
+        $container['session'] = function ($c) {
             return new Session(
-                $c->get('session.storage')
+                $c['session.storage']
             );
-        });
+        };
 
         // Database
-        $container->share(PDO::class, function ($c) {
-            $settings = $c->get('settings')['database'];
+        $container[PDO::class] = function ($c) {
+            $settings = $c['settings']['database'];
             return new PDO(
                 $settings['dsn'],
                 $settings['username'],
                 $settings['password'],
                 $settings['options']
             );
-        });
+        };
     }
 }
