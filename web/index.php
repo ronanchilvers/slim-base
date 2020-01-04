@@ -1,7 +1,6 @@
 <?php
 
 use App\Slim\App;
-use App\Controller\IndexController;
 use Ronanchilvers\Container\Slim\Container;
 
 require("../vendor/autoload.php");

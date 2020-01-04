@@ -1,11 +1,7 @@
 <?php
 
-use App\Debug\Provider;
 use App\Slim\App;
-use DebugBar\DataCollector\ConfigCollector;
-use DebugBar\StandardDebugBar;
 use Ronanchilvers\Container\Slim\Container;
-use Slim\Http\Body;
 
 if (PHP_SAPI == 'cli-server') {
     $url  = parse_url($_SERVER['REQUEST_URI']);
@@ -23,12 +19,9 @@ $container = new Container([
 
 // Load app services
 include("../config/services.php");
-$container->register(new Provider());
 
 // Create the App object
 $app = new App($container);
 include("../config/middleware.php");
-$app->add($container->get('debug.middleware'));
-
 include("../config/routes.php");
 $app->run();
