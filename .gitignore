@@ -1,9 +1,7 @@
+*.sq3
 *.sublime-*
-.env
+.php-version
 /build/
 /node_modules/
 /vendor/
-.php-version
-*.sq3
-local.settings.php
 local.yaml
