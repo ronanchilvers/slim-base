@@ -4,6 +4,6 @@
 /node_modules/
 /vendor/
 .php-version
-local.settings.php
 *.sq3
-web/debugbar
+local.settings.php
+local.yaml

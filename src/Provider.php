@@ -35,6 +35,13 @@ class Provider implements ServiceProviderInterface
             $loggerSettings = $settings['logger'];
             $logger = new Logger('default');
             if (isset($loggerSettings['filename']) && false !== $loggerSettings['filename']) {
+                if (DIRECTORY_SEPARATOR !== substr($loggerSettings['filename'], 0, 1)) {
+                    $loggerSettings['filename'] = File::join(
+                        __DIR__,
+                        '/../',
+                        $loggerSettings['filename']
+                    );
+                }
                 $logger->pushHandler(
                     new StreamHandler(
                         $loggerSettings['filename'],
@@ -50,10 +57,18 @@ class Provider implements ServiceProviderInterface
         // Twig
         $container->share(Twig::class, function (ContainerInterface $c) {
             $settings = $c->get('settings')['twig'];
+            $cache = $settings['cache'];
+            if (false !== $cache && DIRECTORY_SEPARATOR !== substr($cache, 0, 1)) {
+                $cache = File::join(
+                    __DIR__,
+                    '/../',
+                    $cache
+                );
+            }
             $view = new Twig(
                 $settings['templates'],
                 [
-                    'cache' => $settings['cache']
+                    'cache' => $cache
                 ]
             );
             $request = $c->get('request');

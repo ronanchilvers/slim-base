@@ -1,5 +1,7 @@
 <?php
 
+use Symfony\Component\Yaml\Yaml;
+
 $settings = [
     // Slim3 settings
     'displayErrorDetails' => false,
@@ -30,9 +32,9 @@ $settings = [
     ],
 ];
 
-$localConfig = __DIR__ . '/../local.settings.php';
-if (file_exists($localConfig)) {
-    $localSettings = include($localConfig);
+$localYaml = __DIR__ . '/../local.yaml';
+if (file_exists($localYaml)) {
+    $localSettings = Yaml::parseFile($localYaml);
     $settings = array_replace_recursive($settings, $localSettings);
 }
 
