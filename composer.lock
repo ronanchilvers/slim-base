@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d620614380c2d1d06ef37249a3de5c65",
+    "content-hash": "806cbceaf1a0867aaefef07b7ab8e44c",
     "packages": [
         {
             "name": "cakephp/cache",
@@ -1186,7 +1186,7 @@
         },
         {
             "name": "ronanchilvers/foundation",
-            "version": "dev-master",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ronanchilvers/foundation.git",
@@ -1247,7 +1247,7 @@
         },
         {
             "name": "ronanchilvers/orm",
-            "version": "dev-master",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ronanchilvers/orm.git",
@@ -1292,7 +1292,7 @@
         },
         {
             "name": "ronanchilvers/sessions",
-            "version": "dev-master",
+            "version": "1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ronanchilvers/sessions.git",
@@ -2317,11 +2317,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "ronanchilvers/foundation": 20,
-        "ronanchilvers/orm": 20,
-        "ronanchilvers/sessions": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
