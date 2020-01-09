@@ -12,6 +12,7 @@ use Ronanchilvers\Container\ServiceProviderInterface;
 use Ronanchilvers\Container\Container;
 use Ronanchilvers\Sessions\Session;
 use Ronanchilvers\Sessions\Storage\CookieStorage;
+use Ronanchilvers\Utility\File;
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
 
