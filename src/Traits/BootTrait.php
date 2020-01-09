@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Facades\Log;
 use PDO;
 use Psr\Container\ContainerInterface;
 use Ronanchilvers\Foundation\Facade\Facade;
@@ -26,5 +27,11 @@ trait BootTrait
 
         // Configure ORM
         Orm::setConnection($container->get(PDO::class));
+        Orm::getEmitter()->on('query.init', function($sql, $params) {
+            Log::debug('Query init', [
+                'sql'    => $sql,
+                'params' => $params,
+            ]);
+        });
     }
 }
