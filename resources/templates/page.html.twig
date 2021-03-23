@@ -8,11 +8,7 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        <div class="o-wrapper">
-            <div class="o-wrapper__inner">
-                {% block body %}{% endblock %}
-            </div>
-        </div>
+        {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
