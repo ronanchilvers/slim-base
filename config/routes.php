@@ -9,4 +9,4 @@ use App\Controller\IndexController;
 $app->get(
     '/',
     IndexController::class . ':index'
-);
+)->setName('home');
