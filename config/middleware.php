@@ -1,5 +1,6 @@
 <?php
 
+use Ronanchilvers\Sessions\Middleware\Psr15;
 use Slim\Middleware\ErrorMiddleware;
 use Slim\Views\TwigMiddleware;
 // Add middleware here
@@ -9,6 +10,6 @@ use Slim\Views\TwigMiddleware;
 
 $app->add(TwigMiddleware::class);
 
-// $app->add(new \Ronanchilvers\Sessions\SessionMiddleware(
-//     $container->get('session')
-// ));
+$app->add(new Psr15(
+    $container->get('session')
+));
