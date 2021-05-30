@@ -10,7 +10,7 @@
         "ronanchilvers/container": "^1.0",
         "ronanchilvers/foundation": "^1.0",
         "ronanchilvers/orm": "^1.0",
-        "ronanchilvers/sessions": "^1.0",
+        "ronanchilvers/sessions": "^2.0",
         "slim/psr7": "^1.4",
         "slim/slim": "^4.0",
         "slim/twig-view": "^3.2",
