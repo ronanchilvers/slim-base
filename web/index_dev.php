@@ -1,8 +1,8 @@
 <?php
 
-use Slim\App;
 use Ronanchilvers\Container\Container;
 use Ronanchilvers\Foundation\Facade\Facade;
+use Slim\App;
 use Slim\Factory\AppFactory;
 
 if (PHP_SAPI == 'cli-server') {

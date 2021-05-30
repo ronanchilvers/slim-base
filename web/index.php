@@ -1,7 +1,9 @@
 <?php
 
-use App\Slim\App;
-use Ronanchilvers\Container\Slim\Container;
+use Ronanchilvers\Container\Container;
+use Ronanchilvers\Foundation\Facade\Facade;
+use Slim\App;
+use Slim\Factory\AppFactory;
 
 require("../vendor/autoload.php");
 
@@ -12,8 +14,16 @@ $container = new Container([
 // Load app services
 include("../config/services.php");
 
+Facade::setContainer($container);
+
 // Create the App object
-$app = new App($container);
+AppFactory::setContainer($container);
+$app = AppFactory::create();
+$container->share(App::class, $app);
+
+$app->addBodyParsingMiddleware();
+$app->addRoutingMiddleware();
+
 include("../config/middleware.php");
 include("../config/routes.php");
 $app->run();
