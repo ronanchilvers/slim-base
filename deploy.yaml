@@ -25,3 +25,4 @@ clear_paths:
     - resources/js
     - resources/sass
     - resources/tasks
+    - web/index_dev.php

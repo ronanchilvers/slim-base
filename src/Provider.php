@@ -8,13 +8,15 @@ use Monolog\Registry;
 use PDO;
 use Psr\Container\ContainerInterface;
 use Psr\Log\LoggerInterface;
-use Ronanchilvers\Container\ServiceProviderInterface;
 use Ronanchilvers\Container\Container;
+use Ronanchilvers\Container\ServiceProviderInterface;
 use Ronanchilvers\Sessions\Session;
 use Ronanchilvers\Sessions\Storage\CookieStorage;
 use Ronanchilvers\Utility\File;
+use Slim\App;
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
+use Slim\Views\TwigMiddleware;
 
 /**
  * App service provider
@@ -58,30 +60,31 @@ class Provider implements ServiceProviderInterface
         // Twig
         $container->share(Twig::class, function (ContainerInterface $c) {
             $settings = $c->get('settings')['twig'];
+            $paths = $settings['paths'];
             $cache = $settings['cache'];
-            if (false !== $cache && DIRECTORY_SEPARATOR !== substr($cache, 0, 1)) {
+            if (false !== $cache &&
+                DIRECTORY_SEPARATOR !== substr($cache, 0, 1)) {
                 $cache = File::join(
                     __DIR__,
                     '/../',
                     $cache
                 );
             }
-            $view = new Twig(
-                $settings['templates'],
-                [
-                    'cache' => $cache
-                ]
+            $view = Twig::create(
+                $paths,
+                [ 'cache' => $cache ],
             );
-            $request = $c->get('request');
-            $basePath = rtrim(str_ireplace('index.php', '', $request->getUri()->getBasePath()), '/');
-            $view->addExtension(
-                new TwigExtension(
-                    $c->get('router'),
-                    $basePath
-                )
-            );
+            // $view->addExtension(
+            //     new TwigExtension()
+            // );
 
             return $view;
+        });
+        $container->share(TwigMiddleware::class, function (ContainerInterface $c) {
+            return TwigMiddleware::createFromContainer(
+                $c->get(App::class),
+                Twig::class
+            );
         });
 
         // Session
