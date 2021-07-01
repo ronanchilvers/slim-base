@@ -1,5 +1,8 @@
 <?php
 
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Ronanchilvers\Container\Container;
 use Ronanchilvers\Foundation\Facade\Facade;
 use Slim\App;
@@ -22,8 +25,10 @@ $app = AppFactory::create();
 $container->share(App::class, $app);
 
 $app->addBodyParsingMiddleware();
-$app->addRoutingMiddleware();
-
 include("../config/middleware.php");
+
+$app->addRoutingMiddleware();
+$app->add(new ErrorMiddleware());
+
 include("../config/routes.php");
 $app->run();

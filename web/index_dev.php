@@ -1,5 +1,6 @@
 <?php
 
+use App\Middleware\ErrorMiddleware;
 use Ronanchilvers\Container\Container;
 use Ronanchilvers\Foundation\Facade\Facade;
 use Slim\App;
@@ -30,8 +31,13 @@ $app = AppFactory::create();
 $container->share(App::class, $app);
 
 $app->addBodyParsingMiddleware();
-$app->addRoutingMiddleware();
-
 include("../config/middleware.php");
+$app->addRoutingMiddleware();
+if ($container->get('settings')['displayErrorDetails']) {
+    $app->addErrorMiddleware(true, true, true);
+} else {
+    $app->add(new ErrorMiddleware());
+}
+
 include("../config/routes.php");
 $app->run();
