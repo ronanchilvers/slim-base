@@ -2,15 +2,12 @@
 
 namespace App\Middleware;
 
-use App\Facades\Log;
-use PDO;
+use App\Traits\BootTrait;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
-use Ronanchilvers\Foundation\Facade\Facade;
-use Ronanchilvers\Orm\Orm;
 
 /**
  * Middleware to boot the application
@@ -19,6 +16,8 @@ use Ronanchilvers\Orm\Orm;
  */
 class BootMiddleware implements MiddlewareInterface
 {
+    use BootTrait;
+
     /**
      * @var Psr\Container\ContainerInterface
      */
@@ -39,17 +38,7 @@ class BootMiddleware implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        // Configure facades
-        Facade::setContainer($this->container);
-
-        // Configure ORM
-        Orm::setConnection($this->container->get(PDO::class));
-        Orm::getEmitter()->on('query.init', function($sql, $params) {
-            Log::debug('Query init', [
-                'sql'    => $sql,
-                'params' => $params,
-            ]);
-        });
+        $this->boot($this->container);
 
         return $handler->handle($request);
     }
