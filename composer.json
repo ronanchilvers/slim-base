@@ -3,13 +3,14 @@
     "description": "Base framework that extends slim and adds some useful components",
     "type": "project",
     "require": {
+        "php": "^8.2",
         "defuse/php-encryption": "^2.1",
         "dflydev/fig-cookies": "^1.0",
         "monolog/monolog": "^1.23",
         "robmorgan/phinx": "^0.10.6",
-        "ronanchilvers/container": "^1.0",
+        "ronanchilvers/container": "^2.0",
         "ronanchilvers/foundation": "^1.0",
-        "ronanchilvers/orm": "^1.0",
+        "ronanchilvers/orm": "^2.0",
         "ronanchilvers/sessions": "^2.0",
         "slim/psr7": "^1.4",
         "slim/slim": "^4.0",
@@ -32,10 +33,7 @@
         }
     },
     "config": {
-        "process-timeout" : 0,
-        "platform": {
-            "php": "7.3.0"
-        }
+        "process-timeout" : 0
     },
     "scripts": {
         "serve": "cd web && /usr/bin/env php -S localhost:8001 index_dev.php",
