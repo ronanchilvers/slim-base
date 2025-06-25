@@ -17,6 +17,7 @@ use Slim\App;
 use Slim\Views\Twig;
 use Slim\Views\TwigExtension;
 use Slim\Views\TwigMiddleware;
+use Monolog;
 
 /**
  * App service provider
@@ -48,7 +49,7 @@ class Provider implements ServiceProviderInterface
                 $logger->pushHandler(
                     new StreamHandler(
                         $loggerSettings['filename'],
-                        Logger::DEBUG
+                        Monolog\Level::Debug
                     )
                 );
             }
